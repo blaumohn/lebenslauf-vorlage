@@ -1,0 +1,106 @@
+kopfdaten:
+  name: Max Mustermann
+  ort: Berlin 10115
+  telefon: '+49 170 1234567'
+  linkedin: 'https://linkedin.com/in/maxmustermann'
+
+vorstellung:
+  text: >
+    Engagierter Entwickler mit Fokus auf Webtechnologien. Ich suche spannende Projekte,
+    in denen ich sauberen Code, Teamarbeit und kreative Lösungsansätze einbringen kann.
+
+faehigkeiten:
+  - kategorie: Experte
+    symbole: 5
+    technologien: [JavaScript, TypeScript, React, Bash, Git]
+  - kategorie: Fortgeschritten
+    symbole: 4
+    technologien: [Docker, Tailwind CSS, Cypress, GraphQL]
+  - kategorie: Mittel
+    symbole: 3
+    technologien: [Python, PostgreSQL, Node.js]
+  - kategorie: Grundlagen
+    symbole: 2
+    technologien: [Go, C++, Azure]
+
+sprachen:
+  - name: Deutsch
+    niveau: Muttersprache
+  - name: Englisch
+    niveau: Fließend
+  - name: Französisch
+    niveau: Grundkenntnisse
+
+interessen:
+  - Gitarre spielen
+  - Laufen
+  - Kochen
+  - Brettspiele
+
+berufserfahrung:
+  - titel: Webentwickler – Techfirma A
+    ort: Berlin
+    zeitraum: '2023 – heute'
+    tags: [Next.js, CI/CD, TypeScript]
+    punkte:
+      - Architektur modularer UI-Komponenten.
+      - Einführung von CI/CD-Workflows mit GitHub Actions.
+  - titel: Frontend-Entwickler – Startup B
+    ort: Remote
+    zeitraum: '2021 – 2023'
+    tags: [React, Docker, Cypress]
+    punkte:
+      - Aufbau und Pflege einer Design-Komponentenbibliothek.
+      - Entwicklung von Teststrategien mit Cypress.
+  - titel: Werkstudent – Startup B
+    ort: Remote
+    zeitraum: '2020 – 2021'
+    tags: [JavaScript, UX, REST]
+    punkte:
+      - Unterstützung bei UX-Optimierung und Feature-Tests.
+      - Dokumentation von APIs und Schnittstellen.
+  - titel: Praktikum – Agentur C
+    ort: Hamburg
+    zeitraum: '2019 – 2019'
+    tags: [HTML, CSS]
+    punkte:
+      - Erstellung einfacher Landing Pages.
+      - Teilnahme an internen Design-Workshops.
+
+opensource:
+  - titel: Open DevTool
+    zeitraum: '2024'
+    tags: [Vite, Playwright]
+    punkte:
+      - Hot-Reloading für Storybook-Komponenten.
+      - Testabdeckung mit Playwright verbessert.
+  - titel: Markdown Editor
+    zeitraum: '2023'
+    tags: [React, Zustand]
+    punkte:
+      - Echtzeit-Markdown-Vorschau.
+      - Fokus auf barrierefreie Bedienung.
+  - titel: Bash-Skripte Sammlung
+    zeitraum: '2022'
+    tags: [Shell, CLI]
+    punkte:
+      - Automatisierung lokaler Build-Prozesse.
+      - Skripte zur Dateiorganisation.
+
+ausbildung:
+  - grad: Master-Studium
+    uni: Technische Universität Berlin
+    beschreibung: >
+      Schwerpunkte auf Webentwicklung, HCI und Softwarearchitektur.
+  - grad: Bachelor-Studium
+    uni: Universität Leipzig
+    beschreibung: >
+      Einführung in Informatik, Algorithmen, Datenbanken und Medieninformatik.
+
+zweiteseite:
+  kurse:
+    - beschreibung: >
+        Graduate-Kurse: Webarchitektur, Systemdesign, Usability Engineering.
+    - beschreibung: >
+        Bachelor-Kurse: Grundlagen der Programmierung, Theoretische Informatik.
+  interessen: [Gitarre, Laufen, Kochen, Brettspiele]
