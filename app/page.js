@@ -1,39 +1,50 @@
+import { getDaten, getEtiketten } from "./parse";
 import {
   Kopfbereich,
   Vorstellung,
   FaehigkeitenSektion,
   SprachenSektion,
-} from "./components/sektionen";
-import EintragsSektion from "./components/Eintraege";
-import getLebenslaufDaten from "./parseDaten.js";
+  BerufserfahrungSektion,
+  OpensourceSektion,
+} from "./components";
 
 export default function Page() {
+  const lang = "de"; // später z.B. per URL oder Header
+
+  const daten = getDaten(lang);
+  const etiketten = getEtiketten(lang);
   const {
-    kopf,
-    berufserfahrung,
+    kopfdaten,
+    vorstellung,
     faehigkeiten,
     sprachen,
+    berufserfahrung,
     opensource,
-    vorstellung,
-  } = getLebenslaufDaten();
-  return (
-    <main className="grid grid-cols-3 gap-6 p-6 print:grid-cols-3 print:p-4 print:text-sm max-w-screen-lg mx-auto">
-      {/* Linke Spalte */}
-      <aside className="col-span-1 space-y-6">
-        <Kopfbereich {...kopf} />
-        <FaehigkeitenSektion daten={faehigkeiten} />
-        <SprachenSektion daten={sprachen} />
-        <Vorstellung daten={vorstellung} />
-      </aside>
+  } = daten;
 
-      {/* Rechte Spalte */}
-      <section className="col-span-2 space-y-8">
-        <EintragsSektion
-          titel="Berufserfahrung"
-          farbe="blue"
-          daten={berufserfahrung}
+  return (
+    <main className="grid grid-cols-3 gap-6 p-6 max-w-screen-lg mx-auto">
+      <Kopfbereich {...kopfdaten} />
+      <aside className="col-span-1 space-y-6">
+        <FaehigkeitenSektion
+          daten={faehigkeiten}
+          etiketten={etiketten.faehigkeiten}
         />
-        <EintragsSektion titel="Open Source" farbe="green" daten={opensource} />
+        <SprachenSektion daten={sprachen} etiketten={etiketten.sprachen} />
+      </aside>
+      <section className="col-span-2 space-y-4">
+        <Vorstellung
+          vorstellung={vorstellung}
+          etiketten={etiketten.vorstellung}
+        />
+        <BerufserfahrungSektion
+          daten={berufserfahrung}
+          etiketten={etiketten.berufserfahrung}
+        />
+        <OpensourceSektion
+          daten={opensource}
+          etiketten={etiketten.opensource}
+        />
       </section>
     </main>
   );

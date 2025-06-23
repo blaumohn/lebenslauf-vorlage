@@ -1,0 +1,38 @@
+_:
+  de: Lebenslauf
+  en: CV
+
+vorstellung:
+  _:
+    de: Motivation
+    en: Objective
+
+faehigkeiten:
+  _:
+    de: Fähigkeiten
+    en: Skills
+
+berufserfahrung:
+  _:
+    de: Berufserfahrung
+    en: Work Experience
+
+opensource:
+  _:
+    de: Opensource
+    en: Opensource Contributions
+
+sprachen:
+  _:
+    de: Sprachen
+    en: Lanugages
+
+ausbildung:
+  _:
+    de: Ausbildung
+    en: Education
+
+interessen:
+  _:
+    de: Interessen
+    en: Interests

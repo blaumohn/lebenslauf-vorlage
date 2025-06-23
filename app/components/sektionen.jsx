@@ -1,64 +1,58 @@
+import {
+  EintrageSektion,
+  SektionTitle,
+  TagListe,
+  SymbolSkala,
+} from "./lib.jsx";
+
 export function Kopfbereich({ name, ort, telefon, linkedin }) {
   return (
-    <section className='text-sm leading-tight space-y-1'>
-      <h1 className='text-xl font-bold'>{name}</h1>
-      <div className='text-gray-700'>{ort}</div>
-      <div className='text-gray-700'>{telefon}</div>
+    <header className="col-span-3 text-center space-y-1">
+      <h1 className="text-3xl font-bold">{name}</h1>
+      <div className="text-gray-700">{ort}</div>
+      <div className="text-gray-700">{telefon}</div>
       <div>
-        <a
-          href={linkedin}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='text-blue-600 hover:underline break-all'
-        >
+        <a className="text-blue-600 hover:underline" href={linkedin}>
           {linkedin}
         </a>
       </div>
+    </header>
+  );
+}
+
+export function Vorstellung({ vorstellung, etiketten }) {
+  return (
+    <section>
+      <SektionTitle text={etiketten._} />
+      <p className="text-sm text-gray-800">{vorstellung}</p>
     </section>
   );
 }
 
-export function FaehigkeitenSektion({ daten }) {
+export function FaehigkeitenSektion({ daten, etiketten }) {
   return (
     <section>
-      <h2 className='text-lg font-bold mb-2'>Fähigkeiten</h2>
-      <div className='space-y-3'>
-        {daten.map((gruppe, index) => (
-          <FähigkeitsGruppe key={index} {...gruppe} />
-        ))}
-      </div>
+      <SektionTitle text={etiketten._} />
+      {daten.map((gruppe, i) => (
+        <div key={i}>
+          <span> {gruppe.stufe} </span>
+          <SymbolSkala wert={gruppe.wert} />
+          <TagListe tags={gruppe.technologien} />
+        </div>
+      ))}
     </section>
   );
 }
 
-function FähigkeitsGruppe({ kategorie, symbole, technologien }) {
-  const zeichen = '●'.repeat(symbole) + '○'.repeat(5 - symbole);
-  return (
-    <div className='space-y-1'>
-      <div className='flex justify-between text-sm text-gray-700'>
-        <span>{kategorie}</span>
-        <span className='font-mono text-gray-500'>{zeichen}</span>
-      </div>
-      <ul className='flex flex-wrap gap-2 text-sm text-gray-800'>
-        {technologien.map((tech, i) => (
-          <li key={i} className='bg-gray-100 rounded px-2 py-0.5'>
-            {tech}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-export function SprachenSektion({ daten }) {
+export function SprachenSektion({ daten, etiketten }) {
   return (
     <section>
-      <h2 className='text-lg font-bold mb-2'>Sprachen</h2>
-      <ul className='space-y-1 text-sm text-gray-800'>
-        {daten.map(({ sprache, niveau }, i) => (
-          <li key={i} className='flex justify-between'>
+      <SektionTitle text={etiketten._} />
+      <ul>
+        {daten.map(({ sprache, stufe }, i) => (
+          <li key={i} className="flex justify-between text-sm">
             <span>{sprache}</span>
-            <span className='text-gray-500'>{niveau}</span>
+            <span className="text-gray-500">{stufe}</span>
           </li>
         ))}
       </ul>
@@ -66,26 +60,10 @@ export function SprachenSektion({ daten }) {
   );
 }
 
-export function Vorstellung({ daten: { text } }) {
-  return (
-    <section>
-      <h2 className='text-lg font-bold mb-2'>Vorstellung</h2>
-      <p className='text-sm text-gray-800'>{text}</p>
-    </section>
-  );
+export function BerufserfahrungSektion({ daten, etiketten }) {
+  return <EintrageSektion daten={daten} etiketten={etiketten} />;
 }
 
-export function InteressenSektion({ daten }) {
-  return (
-    <section>
-      <h2 className='text-lg font-bold mb-2'>Interessen</h2>
-      <ul className='flex flex-wrap gap-2 text-sm text-gray-800'>
-        {daten.map((interesse, i) => (
-          <li key={i} className='bg-gray-100 rounded px-2 py-0.5'>
-            {interesse}
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
+export function OpensourceSektion({ daten, etiketten }) {
+  return <EintrageSektion daten={daten} etiketten={etiketten} />;
 }

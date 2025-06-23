@@ -1,0 +1,133 @@
+export function EintrageSektion({ daten, etiketten }) {
+  return (
+    <section className="space-y-4">
+      <SektionTitle text={etiketten._} farbe="gray" />
+      {daten.map((eintrag, i) => (
+        <Eintrag key={i} eintrag={eintrag} />
+      ))}
+    </section>
+  );
+}
+
+export function Eintrag({ eintrag }) {
+  if (eintrag.stelleGruppe?.anfang) {
+    return <EintragStelleGruppeAnfang eintrag={eintrag} />;
+  }
+
+  if (eintrag.stelleGruppe?.ende) {
+    return <EintragStelleGruppeEnde eintrag={eintrag} />;
+  }
+
+  return <EintragStelle eintrag={eintrag} />;
+}
+
+function EintragStelle({ eintrag }) {
+  const { projekt, unternehmen } = eintrag;
+
+  return (
+    <div className="mb-6">
+      <div>
+        <span className="text-lg font-semibold text-gray-800">
+          {unternehmen ?? projekt}
+        </span>
+      </div>
+      <EintragInhalt eintrag={eintrag} />
+    </div>
+  );
+}
+
+function EintragStelleGruppeAnfang({ eintrag }) {
+  const { unternehmen } = eintrag;
+
+  return (
+    <div>
+      <div>
+        <span className="text-lg font-bold text-gray-800">
+          {unternehmen}
+        </span>
+      </div>
+
+      <div className="pl-4 border-l-4 border-gray-400 mb-6">
+        <div className="mb-2"></div>
+        <EintragInhalt eintrag={eintrag} />
+      </div>
+    </div>
+  );
+}
+
+function EintragStelleGruppeEnde({ eintrag }) {
+  return (
+    <div className="pl-4 border-l-4 border-gray-400 mb-6">
+      <EintragInhalt eintrag={eintrag} />
+    </div>
+  );
+}
+function EintragInhalt({ eintrag }) {
+  const { titel, ort, zeitraum, punkte } = eintrag;
+
+  return (
+    <div>
+      <div className="flex justify-between items-center">
+        <h3 className="font-medium text-gray-700">{titel}</h3>
+        <span className="text-sm text-gray-500">{zeitraum}</span>
+      </div>
+
+      <div className="flex">
+        {ort && <div className="text-sm text-gray-500 ml-auto">{ort}</div>}
+      </div>
+
+      <ul className="list-disc list-inside text-sm text-gray-700 space-y-4">
+        {punkte.map((punkt, i) => (
+          <Punkt key={i} punkt={punkt} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export function SektionTitle({ text, farbe = "gray" }) {
+  return (
+    <h2
+      className={`text-lg font-bold text-${farbe}-700 border-b border-${farbe}-300 pb-1`}
+    >
+      {text}
+    </h2>
+  );
+}
+
+function Punkt({ punkt }) {
+  return (
+    <div className="space-y-1">
+      <div className="ml-2">
+        {punkt.tags?.length > 0 && <TagListe tags={punkt.tags} />}
+      </div>
+      <ul className="list-disc list-inside text-sm">
+        <li>{punkt.text}</li>
+      </ul>
+    </div>
+  );
+}
+
+export function TagListe({ tags }) {
+  return (
+    <div className="flex flex-wrap gap-2 mt-1">
+      {tags.map((tag, i) => (
+        <span
+          key={i}
+          className="bg-gray-200 px-2 py-0.5 rounded text-xs text-gray-700"
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+export function SymbolSkala({ wert }) {
+  const max = 5;
+  return (
+    <div className="font-mono text-gray-500">
+      {"●".repeat(wert) + "○".repeat(max - wert)}
+    </div>
+  );
+}

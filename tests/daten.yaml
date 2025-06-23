@@ -1,0 +1,117 @@
+kopfdaten:
+  name: "Max Mustermann"
+  ort:
+    de: "Berlin"
+    en: "Berlin"
+  telefon: "+49 30 1234567"
+  linkedin: "https://linkedin.com/in/maxmustermann"
+
+vorstellung:
+  de: >
+    Drei Jahre Erfahrung in der JavaScript-Entwicklung mit Fokus auf Frontend, Backend und SDKs.
+  en: >
+    Three years of experience in JavaScript development focusing on frontend, backend, and SDKs.
+
+faehigkeiten:
+  - stufe:
+      de: "Fortgeschritten"
+      en: "Advanced"
+    wert: 4
+    technologien:
+      - de: "React"
+        en: "React"
+      - de: "Node.js"
+        en: "Node.js"
+
+  - stufe:
+      de: "Regelmäßig genutzt"
+      en: "Working proficiency"
+    wert: 3
+    technologien:
+      - de: "Docker"
+        en: "Docker"
+      - de: "SQL"
+        en: "SQL"
+
+  - stufe:
+      de: "Grundkenntnisse"
+      en: "Basic knowledge"
+    wert: 2
+    technologien:
+      - de: "Kubernetes"
+        en: "Kubernetes"
+
+berufserfahrung:
+  - titel:
+      de: "Softwareentwickler"
+      en: "Software Engineer"
+    zeitraum: "2019-2022"
+    ort:
+      de: "Berlin"
+      en: "Berlin"
+    unternehmen: "Tech AG"
+    stelleGruppe:
+      anfang: true
+      ende: true
+    punkte:
+      - tags:
+          - de: "React"
+            en: "React"
+          - de: "Express.js"
+            en: "Express.js"
+        text:
+          de: "Entwicklung von React-Frontend und Express.js-Backend-Anwendungen für Content-Editoren und Endnutzer."
+          en: "Development of React frontend and Express.js backend applications for content editors and end users."
+      - tags:
+          - de: "Performance Optimierung"
+            en: "Performance Optimization"
+        text:
+          de: "Optimierung der Performance von Node.js-Diensten durch Reduzierung von Speicherverbrauch und verbesserte Thread-Nutzung."
+          en: "Optimized Node.js services performance by reducing memory usage and improving thread concurrency."
+
+opensource:
+  - titel:
+      de: "React Monitor"
+      en: "React Monitor"
+    zeitraum: "2021"
+    projekt: "React Dev Tool"
+    punkte:
+      - tags:
+          - de: "React Profiler"
+            en: "React Profiler"
+        text:
+          de: "Entwicklung eines Analysewerkzeugs zur Performance-Überwachung basierend auf dem React Profiler."
+          en: "Developed a performance monitoring tool based on the React Profiler."
+
+sprachen:
+  - sprache:
+      de: "Deutsch"
+      en: "German"
+    stufe:
+      de: "Fließend"
+      en: "Fluent"
+  - sprache:
+      de: "Englisch"
+      en: "English"
+    stufe:
+      de: "Fortgeschritten"
+      en: "Advanced"
+
+ausbildung:
+  - uni:
+      de: "Technische Universität Berlin"
+      en: "Technical University of Berlin"
+    grad:
+      de: "Master of Science in Informatik"
+      en: "Master of Science in Computer Science"
+    beschreibung:
+      de: "Vertiefung in Softwareentwicklung und verteilte Systeme."
+      en: "Specialization in software development and distributed systems."
+
+interessen:
+  - de: "Programmieren"
+    en: "Programming"
+  - de: "Künstliche Intelligenz"
+    en: "Artificial Intelligence"
+  - de: "Fußball"
+    en: "Football"
