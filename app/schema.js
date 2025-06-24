@@ -50,19 +50,27 @@ const eintragAusbildung = z.object({
   beschreibung: intlString,
 });
 
+const eintragVortrag = z.object({
+  titel: z.string(),
+  beschreibung: intlString,
+});
+
 export const lebenslaufSchema = z.object({
   kopfdaten: z.object({
     name: z.string(),
+    bereich: intlString,
     ort: intlString,
+    email: z.string(),
     telefon: z.string(),
     linkedin: z.string(),
   }),
-  vorstellung: intlString,
+  motivation: intlString,
   faehigkeiten: z.array(faehigkeitStufe),
   berufserfahrung: z.array(eintragBeruf),
   opensource: z.array(eintragProjekt),
   sprachen: z.array(sprachen),
   ausbildung: z.array(eintragAusbildung),
+  vortraege: z.array(eintragVortrag),
   interessen: z.array(intlString),
 });
 

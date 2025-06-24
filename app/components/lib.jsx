@@ -26,11 +26,7 @@ function EintragStelle({ eintrag }) {
 
   return (
     <div className="mb-6">
-      <div>
-        <span className="text-lg font-semibold text-gray-800">
-          {unternehmen ?? projekt}
-        </span>
-      </div>
+      <EintragObertitel titel={unternehmen ?? projekt} />
       <EintragInhalt eintrag={eintrag} />
     </div>
   );
@@ -41,11 +37,7 @@ function EintragStelleGruppeAnfang({ eintrag }) {
 
   return (
     <div>
-      <div>
-        <span className="text-lg font-bold text-gray-800">
-          {unternehmen}
-        </span>
-      </div>
+      <EintragObertitel titel={unternehmen} />
 
       <div className="pl-4 border-l-4 border-gray-400 mb-6">
         <div className="mb-2"></div>
@@ -69,14 +61,14 @@ function EintragInhalt({ eintrag }) {
     <div>
       <div className="flex justify-between items-center">
         <h3 className="font-medium text-gray-700">{titel}</h3>
-        <span className="text-sm text-gray-500">{zeitraum}</span>
+        <span className="eintrag-datum">{zeitraum}</span>
       </div>
 
       <div className="flex">
-        {ort && <div className="text-sm text-gray-500 ml-auto">{ort}</div>}
+        {ort && <div className="eintrag-datum ml-auto">{ort}</div>}
       </div>
 
-      <ul className="list-disc list-inside text-sm text-gray-700 space-y-4">
+      <ul className="list-disc list-inside text-beschreibung space-y-4">
         {punkte.map((punkt, i) => (
           <Punkt key={i} punkt={punkt} />
         ))}
@@ -85,10 +77,16 @@ function EintragInhalt({ eintrag }) {
   );
 }
 
-export function SektionTitle({ text, farbe = "gray" }) {
+function EintragObertitel({ titel }) {
+  return (
+    <div className="text-lg font-semibold text-gray-800">{titel}</div>
+  );
+}
+
+export function SektionTitle({ text }) {
   return (
     <h2
-      className={`text-lg font-bold text-${farbe}-700 border-b border-${farbe}-300 pb-1`}
+      className={`text-lg font-bold text-gray-700 border-b border-gray-300 pb-1`}
     >
       {text}
     </h2>

@@ -1,6 +1,6 @@
 export {
   Kopfbereich,
-  Vorstellung,
+  Motivation,
   FaehigkeitenSektion,
   SprachenSektion,
   BerufserfahrungSektion,

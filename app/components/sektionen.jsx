@@ -5,37 +5,57 @@ import {
   SymbolSkala,
 } from "./lib.jsx";
 
-export function Kopfbereich({ name, ort, telefon, linkedin }) {
+export function Kopfbereich({ halbe, ...kopfdaten }) {
+  switch (halbe) {
+    case "rechts":
+      return <KopfbereichRechts {...kopfdaten} />;
+    case "links":
+      return <KopfbereichLinks {...kopfdaten} />;
+  }
+}
+
+function KopfbereichRechts({ telefon, ort, email, linkedin }) {
+  console.log(telefon, ort, email, linkedin);
   return (
-    <header className="col-span-3 text-center space-y-1">
-      <h1 className="text-3xl font-bold">{name}</h1>
-      <div className="text-gray-700">{ort}</div>
-      <div className="text-gray-700">{telefon}</div>
-      <div>
-        <a className="text-blue-600 hover:underline" href={linkedin}>
-          {linkedin}
-        </a>
+    <header className="flex items-center max-w-screen-lg">
+      <div className="ml-auto text-gray-700 text-right">
+        <p>
+          {telefon} | {ort}
+        </p>
+        <p>{email}</p>
+        <p>{linkedin}</p>
       </div>
     </header>
   );
 }
 
-export function Vorstellung({ vorstellung, etiketten }) {
+function KopfbereichLinks({ name, bereich }) {
+  return (
+    <div className="text-2xl font-bold text-left">
+      {name}
+      <h2 className="text-lg text-left font-semibold text-gray-600 whitespace-nowrap overflow:visible">
+        {bereich}
+      </h2>
+    </div>
+  );
+}
+
+export function Motivation({ vorstellung, etiketten }) {
   return (
     <section>
       <SektionTitle text={etiketten._} />
-      <p className="text-sm text-gray-800">{vorstellung}</p>
+      <p className="text-beschreibung">{vorstellung}</p>
     </section>
   );
 }
 
 export function FaehigkeitenSektion({ daten, etiketten }) {
   return (
-    <section>
+    <section className="space-y-4">
       <SektionTitle text={etiketten._} />
       {daten.map((gruppe, i) => (
-        <div key={i}>
-          <span> {gruppe.stufe} </span>
+        <div className="mb-6" key={i}>
+          <span className="text-sm">{gruppe.stufe}</span>
           <SymbolSkala wert={gruppe.wert} />
           <TagListe tags={gruppe.technologien} />
         </div>

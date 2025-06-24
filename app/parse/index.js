@@ -9,7 +9,6 @@ export function getEtiketten(lang) {
 
 export function getDaten(lang) {
   const mockDatenPfad = path.join("tests", "daten.yaml");
-  console.log({ mockDatenPfad });
   return getObjektVonYaml(
     "daten.yaml",
     lang,

@@ -2,7 +2,7 @@ _:
   de: Lebenslauf
   en: CV
 
-vorstellung:
+motivation:
   _:
     de: Motivation
     en: Objective
@@ -31,6 +31,11 @@ ausbildung:
   _:
     de: Ausbildung
     en: Education
+
+vortraege:
+  _:
+    de: Öffentliche Vorträge
+    en: Public Talks
 
 interessen:
   _:

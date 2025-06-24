@@ -1,117 +1,87 @@
 kopfdaten:
-  name: "Max Mustermann"
-  ort:
-    de: "Berlin"
-    en: "Berlin"
-  telefon: "+49 30 1234567"
-  linkedin: "https://linkedin.com/in/maxmustermann"
+  name: Alex Beispiel
+  bereich:
+    de: Webentwicklung
+    en: Web Development
+  ort: Berlin
+  email: alex@example.com
+  telefon: +49 151 12345678
+  linkedin: https://linkedin.com/in/alexbeispiel
 
-vorstellung:
-  de: >
-    Drei Jahre Erfahrung in der JavaScript-Entwicklung mit Fokus auf Frontend, Backend und SDKs.
-  en: >
-    Three years of experience in JavaScript development focusing on frontend, backend, and SDKs.
+motivation:
+  de: Ich bin ein leidenschaftlicher Entwickler mit Fokus auf moderne Webtechnologien.
+  en: I am a passionate developer focused on modern web technologies.
 
 faehigkeiten:
   - stufe:
-      de: "Fortgeschritten"
-      en: "Advanced"
+      de: Fortgeschritten
+      en: Advanced
+    wert: 5
+    technologien:
+      - JavaScript
+      - TypeScript
+      - de: Reaktive Komponenten
+        en: Reactive components
+  - stufe:
+      de: Grundlegend
+      en: Basic
     wert: 4
     technologien:
-      - de: "React"
-        en: "React"
-      - de: "Node.js"
-        en: "Node.js"
-
-  - stufe:
-      de: "Regelmäßig genutzt"
-      en: "Working proficiency"
-    wert: 3
-    technologien:
-      - de: "Docker"
-        en: "Docker"
-      - de: "SQL"
-        en: "SQL"
-
-  - stufe:
-      de: "Grundkenntnisse"
-      en: "Basic knowledge"
-    wert: 2
-    technologien:
-      - de: "Kubernetes"
-        en: "Kubernetes"
+      - Docker
+      - Git
+      - CI/CD
 
 berufserfahrung:
-  - titel:
-      de: "Softwareentwickler"
-      en: "Software Engineer"
-    zeitraum: "2019-2022"
-    ort:
-      de: "Berlin"
-      en: "Berlin"
-    unternehmen: "Tech AG"
-    stelleGruppe:
-      anfang: true
-      ende: true
+  - titel: Frontend Developer
+    unternehmen: Tech Solutions GmbH
+    ort: Berlin
+    zeitraum: 2021 – 2023
     punkte:
       - tags:
-          - de: "React"
-            en: "React"
-          - de: "Express.js"
-            en: "Express.js"
-        text:
-          de: "Entwicklung von React-Frontend und Express.js-Backend-Anwendungen für Content-Editoren und Endnutzer."
-          en: "Development of React frontend and Express.js backend applications for content editors and end users."
+          - React
+          - Tailwind
+        text: UI-Komponenten für ein Kundenportal entwickelt.
       - tags:
-          - de: "Performance Optimierung"
-            en: "Performance Optimization"
+          - Agil
+          - Scrum
         text:
-          de: "Optimierung der Performance von Node.js-Diensten durch Reduzierung von Speicherverbrauch und verbesserte Thread-Nutzung."
-          en: "Optimized Node.js services performance by reducing memory usage and improving thread concurrency."
+          de: Tägliche Arbeit in einem cross-funktionalen Team.
+          en: Daily work in a cross-functional team.
 
 opensource:
-  - titel:
-      de: "React Monitor"
-      en: "React Monitor"
-    zeitraum: "2021"
-    projekt: "React Dev Tool"
+  - titel: react-visualizer
+    projekt: react-visualizer
+    zeitraum: "2022"
     punkte:
       - tags:
-          - de: "React Profiler"
-            en: "React Profiler"
-        text:
-          de: "Entwicklung eines Analysewerkzeugs zur Performance-Überwachung basierend auf dem React Profiler."
-          en: "Developed a performance monitoring tool based on the React Profiler."
+          - Open Source
+          - React
+        text: Ein Tool zur Visualisierung von React-Komponenten-Hierarchien.
 
 sprachen:
-  - sprache:
-      de: "Deutsch"
-      en: "German"
-    stufe:
-      de: "Fließend"
-      en: "Fluent"
-  - sprache:
-      de: "Englisch"
-      en: "English"
-    stufe:
-      de: "Fortgeschritten"
-      en: "Advanced"
+  - sprache: Deutsch
+    stufe: Muttersprache
+  - sprache: Englisch
+    stufe: C1
 
 ausbildung:
-  - uni:
-      de: "Technische Universität Berlin"
-      en: "Technical University of Berlin"
-    grad:
-      de: "Master of Science in Informatik"
-      en: "Master of Science in Computer Science"
+  - uni: TU Berlin
+    grad: B.Sc. Informatik
     beschreibung:
-      de: "Vertiefung in Softwareentwicklung und verteilte Systeme."
-      en: "Specialization in software development and distributed systems."
+      de: Studium mit Schwerpunkt auf Web- und Softwareentwicklung.
+      en: Studies with a focus on web and software development.
 
 interessen:
-  - de: "Programmieren"
-    en: "Programming"
-  - de: "Künstliche Intelligenz"
-    en: "Artificial Intelligence"
-  - de: "Fußball"
-    en: "Football"
+  - de: Open Source
+    en: Open source
+  - de: Technologieblogs
+    en: Tech blogs
+  - de: Barrierefreiheit
+    en: Accessibility
+
+vortraege:
+  - titel: "Proxies: Node.js Event Management"
+    beschreibung:
+      de: Vortrag im Rahmen der ABC Aventura Speaker Series
+      en: ABC Aventura Speaker Series
+

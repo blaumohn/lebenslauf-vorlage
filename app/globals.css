@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .text-beschreibung {
+    @apply text-sm text-gray-800;
+  }
+  .eintrag-datum {
+    @apply text-sm text-gray-500;
+  }
+}

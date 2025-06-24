@@ -1,7 +1,7 @@
 import { getDaten, getEtiketten } from "./parse";
 import {
   Kopfbereich,
-  Vorstellung,
+  Motivation,
   FaehigkeitenSektion,
   SprachenSektion,
   BerufserfahrungSektion,
@@ -15,7 +15,7 @@ export default function Page() {
   const etiketten = getEtiketten(lang);
   const {
     kopfdaten,
-    vorstellung,
+    motivation,
     faehigkeiten,
     sprachen,
     berufserfahrung,
@@ -23,24 +23,30 @@ export default function Page() {
   } = daten;
 
   return (
-    <main className="grid grid-cols-3 gap-6 p-6 max-w-screen-lg mx-auto">
-      <Kopfbereich {...kopfdaten} />
-      <aside className="col-span-1 space-y-6">
+    <main className="grid grid-cols-4 gap-6 p-6 max-w-screen-lg mx-auto">
+      <aside className="col-span-1 col-start-1 space-y-6">
+        <Kopfbereich {...kopfdaten} halbe="links" />
+
         <FaehigkeitenSektion
           daten={faehigkeiten}
           etiketten={etiketten.faehigkeiten}
         />
+
         <SprachenSektion daten={sprachen} etiketten={etiketten.sprachen} />
       </aside>
-      <section className="col-span-2 space-y-4">
-        <Vorstellung
-          vorstellung={vorstellung}
-          etiketten={etiketten.vorstellung}
+      <section className="col-start-2 col-span-3 space-y-4">
+        <Kopfbereich {...kopfdaten} halbe="rechts" />
+
+        <Motivation
+          motivation={motivation}
+          etiketten={etiketten.motivation}
         />
+
         <BerufserfahrungSektion
           daten={berufserfahrung}
           etiketten={etiketten.berufserfahrung}
         />
+
         <OpensourceSektion
           daten={opensource}
           etiketten={etiketten.opensource}
