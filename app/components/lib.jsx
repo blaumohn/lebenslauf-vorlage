@@ -1,7 +1,7 @@
 export function EintrageSektion({ daten, etiketten }) {
   return (
-    <section className="space-y-4">
-      <SektionTitle text={etiketten._} farbe="gray" />
+    <section>
+      <SektionTitle text={etiketten._} />
       {daten.map((eintrag, i) => (
         <Eintrag key={i} eintrag={eintrag} />
       ))}
@@ -59,13 +59,17 @@ function EintragInhalt({ eintrag }) {
 
   return (
     <div>
-      <div className="flex justify-between items-center">
-        <h3 className="font-medium text-gray-700">{titel}</h3>
-        <span className="eintrag-datum">{zeitraum}</span>
-      </div>
+      <div className="relative mb-3">
+        <div className="flex justify-between items-center">
+          <h3 className="font-medium text-gray-700">{titel}</h3>
+          <span className="eintrag-datum">{zeitraum}</span>
+        </div>
 
-      <div className="flex">
-        {ort && <div className="eintrag-datum ml-auto">{ort}</div>}
+        {ort && (
+          <div className="absolute top-full right-0 eintrag-datum ml-auto">
+            {ort}
+          </div>
+        )}
       </div>
 
       <ul className="list-disc list-inside text-beschreibung space-y-4">
@@ -85,22 +89,21 @@ function EintragObertitel({ titel }) {
 
 export function SektionTitle({ text }) {
   return (
-    <h2
-      className={`text-lg font-bold text-gray-700 border-b border-gray-300 pb-1`}
-    >
-      {text}
-    </h2>
+    <div>
+      <div className="w-7/8 border-1 border-t border-gray-300 ml-1"></div>
+      <h2 className="text-xl font-bold text-gray-600 pb-3">{text}</h2>
+    </div>
   );
 }
 
-function Punkt({ punkt }) {
+export function Punkt({ punkt }) {
   return (
     <div className="space-y-1">
-      <div className="ml-2">
+      <div className="pl-4">
         {punkt.tags?.length > 0 && <TagListe tags={punkt.tags} />}
       </div>
-      <ul className="list-disc list-inside text-sm">
-        <li>{punkt.text}</li>
+      <ul className="list-disc pl-3 list-outside text-beschreibung">
+        <li className="">{punkt.text}</li>
       </ul>
     </div>
   );

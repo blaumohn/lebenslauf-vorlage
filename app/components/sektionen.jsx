@@ -3,6 +3,7 @@ import {
   SektionTitle,
   TagListe,
   SymbolSkala,
+  Punkt,
 } from "./lib.jsx";
 
 export function Kopfbereich({ halbe, ...kopfdaten }) {
@@ -15,7 +16,6 @@ export function Kopfbereich({ halbe, ...kopfdaten }) {
 }
 
 function KopfbereichRechts({ telefon, ort, email, linkedin }) {
-  console.log(telefon, ort, email, linkedin);
   return (
     <header className="flex items-center max-w-screen-lg">
       <div className="ml-auto text-gray-700 text-right">
@@ -40,24 +40,28 @@ function KopfbereichLinks({ name, bereich }) {
   );
 }
 
-export function Motivation({ vorstellung, etiketten }) {
+export function Motivation({ motivation, etiketten }) {
   return (
-    <section>
+    <section className="pb-2">
       <SektionTitle text={etiketten._} />
-      <p className="text-beschreibung">{vorstellung}</p>
+      <p className="text-beschreibung">{motivation}</p>
     </section>
   );
 }
 
 export function FaehigkeitenSektion({ daten, etiketten }) {
   return (
-    <section className="space-y-4">
+    <section>
       <SektionTitle text={etiketten._} />
       {daten.map((gruppe, i) => (
         <div className="mb-6" key={i}>
-          <span className="text-sm">{gruppe.stufe}</span>
-          <SymbolSkala wert={gruppe.wert} />
-          <TagListe tags={gruppe.technologien} />
+          <span className="text-sm font-semibold text-gray-600">
+            {gruppe.stufe}
+          </span>
+          <div className="pl-1">
+            <SymbolSkala wert={gruppe.wert} />
+            <TagListe tags={gruppe.technologien} />
+          </div>
         </div>
       ))}
     </section>
@@ -80,6 +84,19 @@ export function SprachenSektion({ daten, etiketten }) {
   );
 }
 
+export function AusbildungSektion({ daten, etiketten }) {
+  const erreicheText = ({ uni, grad, beschreibung }) =>
+    [beschreibung, grad, uni].filter((feld) => feld !== "").join(", ");
+
+  return (
+    <section>
+      <SektionTitle text={etiketten._} />
+      {daten?.map((eintrag, i) => (
+        <Punkt key={i} punkt={{ text: erreicheText(eintrag) }} />
+      ))}
+    </section>
+  );
+}
 export function BerufserfahrungSektion({ daten, etiketten }) {
   return <EintrageSektion daten={daten} etiketten={etiketten} />;
 }

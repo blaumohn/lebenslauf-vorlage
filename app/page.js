@@ -7,6 +7,7 @@ import {
   BerufserfahrungSektion,
   OpensourceSektion,
 } from "./components";
+import { AusbildungSektion } from "./components/sektionen";
 
 export default function Page() {
   const lang = "de"; // später z.B. per URL oder Header
@@ -19,6 +20,9 @@ export default function Page() {
     faehigkeiten,
     sprachen,
     berufserfahrung,
+    vortraege,
+    interessen,
+    ausbildung,
     opensource,
   } = daten;
 
@@ -50,6 +54,11 @@ export default function Page() {
         <OpensourceSektion
           daten={opensource}
           etiketten={etiketten.opensource}
+        />
+
+        <AusbildungSektion
+          daten={ausbildung}
+          etiketten={etiketten.ausbildung}
         />
       </section>
     </main>
