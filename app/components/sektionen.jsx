@@ -1,6 +1,6 @@
 import {
   EintrageSektion,
-  SektionTitle,
+  Sektion,
   TagListe,
   SymbolSkala,
   Punkt,
@@ -17,8 +17,8 @@ export function Kopfbereich({ halbe, ...kopfdaten }) {
 
 function KopfbereichRechts({ telefon, ort, email, linkedin }) {
   return (
-    <header className="flex items-center max-w-screen-lg">
-      <div className="ml-auto text-gray-700 text-right">
+    <header className="flex items-center max-w-screen-lg mb-5">
+      <div className="ml-auto text-gray-700 font-semibold text-sm text-right">
         <p>
           {telefon} | {ort}
         </p>
@@ -31,47 +31,44 @@ function KopfbereichRechts({ telefon, ort, email, linkedin }) {
 
 function KopfbereichLinks({ name, bereich }) {
   return (
-    <div className="text-2xl font-bold text-left">
-      {name}
-      <h2 className="text-lg text-left font-semibold text-gray-600 whitespace-nowrap overflow:visible">
+    <div className="mb-4.5">
+      <div className="text-2xl font-bold text-left">{name}</div>
+      <div className="text-lg text-left font-semibold text-gray-600 whitespace-nowrap overflow:visible">
         {bereich}
-      </h2>
+      </div>
     </div>
   );
 }
 
 export function Motivation({ motivation, etiketten }) {
   return (
-    <section className="pb-2">
-      <SektionTitle text={etiketten._} />
+    <Sektion titel={etiketten._}>
       <p className="text-beschreibung">{motivation}</p>
-    </section>
+    </Sektion>
   );
 }
 
 export function FaehigkeitenSektion({ daten, etiketten }) {
   return (
-    <section>
-      <SektionTitle text={etiketten._} />
+    <Sektion titel={etiketten._}>
       {daten.map((gruppe, i) => (
-        <div className="mb-6" key={i}>
+        <div className="space-y-6" key={i}>
           <span className="text-sm font-semibold text-gray-600">
             {gruppe.stufe}
           </span>
-          <div className="pl-1">
+          <div className="pl-1 space-y-1">
             <SymbolSkala wert={gruppe.wert} />
             <TagListe tags={gruppe.technologien} />
           </div>
         </div>
       ))}
-    </section>
+    </Sektion>
   );
 }
 
 export function SprachenSektion({ daten, etiketten }) {
   return (
-    <section>
-      <SektionTitle text={etiketten._} />
+    <Sektion titel={etiketten._}>
       <ul>
         {daten.map(({ sprache, stufe }, i) => (
           <li key={i} className="flex justify-between text-sm">
@@ -80,7 +77,17 @@ export function SprachenSektion({ daten, etiketten }) {
           </li>
         ))}
       </ul>
-    </section>
+    </Sektion>
+  );
+}
+
+export function InteressenSektion({ daten, etiketten }) {
+  return (
+    <Sektion titel={etiketten._}>
+      {daten?.map((interesse, i) => (
+        <Punkt key={i} punkt={interesse} />
+      ))}
+    </Sektion>
   );
 }
 
@@ -89,14 +96,20 @@ export function AusbildungSektion({ daten, etiketten }) {
     [beschreibung, grad, uni].filter((feld) => feld !== "").join(", ");
 
   return (
-    <section>
-      <SektionTitle text={etiketten._} />
-      {daten?.map((eintrag, i) => (
-        <Punkt key={i} punkt={{ text: erreicheText(eintrag) }} />
-      ))}
-    </section>
+    <Sektion titel={etiketten._}>
+      <div className="space-y-2">
+        {daten?.map((eintrag, i) => (
+          <Punkt
+            punktTextStil="text-base"
+            key={i}
+            punkt={{ text: erreicheText(eintrag) }}
+          />
+        ))}
+      </div>
+    </Sektion>
   );
 }
+
 export function BerufserfahrungSektion({ daten, etiketten }) {
   return <EintrageSektion daten={daten} etiketten={etiketten} />;
 }

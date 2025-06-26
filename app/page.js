@@ -28,7 +28,7 @@ export default function Page() {
 
   return (
     <main className="grid grid-cols-4 gap-6 p-6 max-w-screen-lg mx-auto">
-      <aside className="col-span-1 col-start-1 space-y-6">
+      <aside className="col-span-1 col-start-1 space-y-8">
         <Kopfbereich {...kopfdaten} halbe="links" />
 
         <FaehigkeitenSektion
@@ -38,7 +38,7 @@ export default function Page() {
 
         <SprachenSektion daten={sprachen} etiketten={etiketten.sprachen} />
       </aside>
-      <section className="col-start-2 col-span-3 space-y-4">
+      <section className="col-start-2 col-span-3 space-y-8">
         <Kopfbereich {...kopfdaten} halbe="rechts" />
 
         <Motivation

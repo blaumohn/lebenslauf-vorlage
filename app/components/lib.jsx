@@ -1,11 +1,19 @@
-export function EintrageSektion({ daten, etiketten }) {
+export function Sektion({ children, titel }) {
   return (
     <section>
-      <SektionTitle text={etiketten._} />
+      <SektionTitle text={titel} />
+      <div className="space-y-6">{children}</div>
+    </section>
+  );
+}
+
+export function EintrageSektion({ daten, etiketten }) {
+  return (
+    <Sektion titel={etiketten._}>
       {daten.map((eintrag, i) => (
         <Eintrag key={i} eintrag={eintrag} />
       ))}
-    </section>
+    </Sektion>
   );
 }
 
@@ -25,7 +33,7 @@ function EintragStelle({ eintrag }) {
   const { projekt, unternehmen } = eintrag;
 
   return (
-    <div className="mb-6">
+    <div>
       <EintragObertitel titel={unternehmen ?? projekt} />
       <EintragInhalt eintrag={eintrag} />
     </div>
@@ -39,9 +47,8 @@ function EintragStelleGruppeAnfang({ eintrag }) {
     <div>
       <EintragObertitel titel={unternehmen} />
 
-      <div className="pl-4 border-l-4 border-gray-400 mb-6">
-        <div className="mb-2"></div>
-        <EintragInhalt eintrag={eintrag} />
+      <div className="pl-4 border-l-4 border-gray-400">
+        <EintragInhalt className="mt-2" eintrag={eintrag} />
       </div>
     </div>
   );
@@ -49,16 +56,16 @@ function EintragStelleGruppeAnfang({ eintrag }) {
 
 function EintragStelleGruppeEnde({ eintrag }) {
   return (
-    <div className="pl-4 border-l-4 border-gray-400 mb-6">
+    <div className="pl-4 border-l-4 border-gray-400">
       <EintragInhalt eintrag={eintrag} />
     </div>
   );
 }
-function EintragInhalt({ eintrag }) {
+function EintragInhalt({ eintrag, className }) {
   const { titel, ort, zeitraum, punkte } = eintrag;
 
   return (
-    <div>
+    <div className={className}>
       <div className="relative mb-3">
         <div className="flex justify-between items-center">
           <h3 className="font-medium text-gray-700">{titel}</h3>
@@ -91,19 +98,22 @@ export function SektionTitle({ text }) {
   return (
     <div>
       <div className="w-7/8 border-1 border-t border-gray-300 ml-1"></div>
-      <h2 className="text-xl font-bold text-gray-600 pb-3">{text}</h2>
+      <h2 className="text-lg font-bold text-gray-600 pb-3 leading-tight">
+        {text}
+      </h2>
     </div>
   );
 }
 
-export function Punkt({ punkt }) {
+export function Punkt({ punktTextStil, punkt }) {
+  const punktCSS = `list-disc list-outside pl-3 text-beschreibung !${punktTextStil}`;
   return (
     <div className="space-y-1">
-      <div className="pl-4">
-        {punkt.tags?.length > 0 && <TagListe tags={punkt.tags} />}
-      </div>
-      <ul className="list-disc pl-3 list-outside text-beschreibung">
-        <li className="">{punkt.text}</li>
+      {punkt.tags?.length > 0 && (
+        <div className="pl-4">{<TagListe tags={punkt.tags} />}</div>
+      )}
+      <ul className={punktCSS}>
+        <li>{punkt.text}</li>
       </ul>
     </div>
   );
@@ -111,7 +121,7 @@ export function Punkt({ punkt }) {
 
 export function TagListe({ tags }) {
   return (
-    <div className="flex flex-wrap gap-2 mt-1">
+    <div className="flex flex-wrap gap-2">
       {tags.map((tag, i) => (
         <span
           key={i}
