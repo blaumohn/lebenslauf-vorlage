@@ -68,7 +68,7 @@ function EintragInhalt({ eintrag, className }) {
     <div className={className}>
       <div className="relative mb-3">
         <div className="flex justify-between items-center">
-          <h3 className="font-medium text-base text-gray-700">{titel}</h3>
+          <h3 className="font-medium text-sm text-gray-700">{titel}</h3>
           <span className="eintrag-datum">{zeitraum}</span>
         </div>
 
@@ -79,18 +79,18 @@ function EintragInhalt({ eintrag, className }) {
         )}
       </div>
 
-      <ul className="list-disc list-inside text-beschreibung space-y-4">
+      <div className="space-y-4">
         {punkte.map((punkt, i) => (
           <Punkt key={i} punkt={punkt} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
 
 function EintragObertitel({ titel }) {
   return (
-    <div className="text-base font-semibold text-gray-800">{titel}</div>
+    <div className="text-sm font-semibold text-gray-800">{titel}</div>
   );
 }
 
@@ -98,7 +98,7 @@ export function SektionTitle({ text }) {
   return (
     <div>
       <div className="w-7/8 border-1 border-t border-gray-400 ml-1"></div>
-      <h2 className="text-base font-bold text-gray-600 pb-3 leading-tight">
+      <h2 className="text-base font-bold text-black pb-3 leading-tight">
         {text}
       </h2>
     </div>
@@ -106,15 +106,16 @@ export function SektionTitle({ text }) {
 }
 
 export function Punkt({ punktTextStil, punkt }) {
-  const punktCSS = `list-disc list-outside pl-3 text-beschreibung !${punktTextStil}`;
   return (
-    <div className="space-y-1">
+    <div className="space-y-1 break-inside-avoid">
       {punkt.tags?.length > 0 && (
         <div className="pl-4">{<TagListe tags={punkt.tags} />}</div>
       )}
-      <ul className={punktCSS}>
+      <ul className="list-disc list-outside pl-3 text-beschreibung">
         <li>
-          <span>{punkt.text}</span>
+          <p>
+            <span className={punktTextStil}>{punkt.text}</span>
+          </p>
         </li>
       </ul>
     </div>

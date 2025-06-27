@@ -27,8 +27,8 @@ export default async function Page({ params }) {
   } = daten;
 
   return (
-    <main className="grid grid-cols-32 gap-4 p-6 max-w-screen-lg mx-auto">
-      <aside className="col-span-7 col-start-1 space-y-8">
+    <main className="flex flex-row gap-4 p-6 max-w-screen-lg mx-auto">
+      <aside className="w-7/32 space-y-8">
         <Kopfbereich {...kopfdaten} halbe="links" />
 
         <FaehigkeitenSektion
@@ -42,7 +42,7 @@ export default async function Page({ params }) {
           etiketten={etiketten.interessen}
         />
       </aside>
-      <section className="col-start-8 col-span-25 space-y-6">
+      <section className="w-25/32 space-y-6">
         <Kopfbereich {...kopfdaten} halbe="rechts" />
 
         <Motivation

@@ -30,7 +30,7 @@ function KopfbereichRechts({ telefon, ort, email, linkedin }) {
 function KopfbereichLinks({ name, bereich }) {
   return (
     <div className="mb-3">
-      <p className="text-3xl font-semibold text-auslaufend text-left">
+      <p className="text-3xl text-black font-semibold text-auslaufend text-left">
         {name}
       </p>
       <p className="text-base text-left font-semibold text-gray-500 text-auslaufend leading-tight">
@@ -99,11 +99,7 @@ export function AusbildungSektion({ daten, etiketten }) {
     <Sektion titel={etiketten._}>
       <div className="space-y-2">
         {daten?.map((eintrag, i) => (
-          <Punkt
-            punktTextStil="text-base"
-            key={i}
-            punkt={{ text: erreicheText(eintrag) }}
-          />
+          <Punkt key={i} punkt={{ text: erreicheText(eintrag) }} />
         ))}
       </div>
     </Sektion>
