@@ -42,15 +42,15 @@ function KopfbereichLinks({ name, bereich }) {
 
 export function Motivation({ motivation, etiketten }) {
   return (
-    <Sektion titel={etiketten._}>
+    <Sektion titel={etiketten._} ohneLinie>
       <p className="text-beschreibung">{motivation}</p>
     </Sektion>
   );
 }
 
-export function FaehigkeitenSektion({ daten, etiketten }) {
+export function FaehigkeitenSektion({ daten }) {
   return (
-    <Sektion titel={etiketten._}>
+    <Sektion className="mt-15" ohneTitel ohneLinie>
       {daten.map((gruppe, i) => (
         <div className="space-y-6" key={i}>
           <span className="text-sm font-semibold text-gray-600">
@@ -100,6 +100,18 @@ export function AusbildungSektion({ daten, etiketten }) {
       <div className="space-y-2">
         {daten?.map((eintrag, i) => (
           <Punkt key={i} punkt={{ text: erreicheText(eintrag) }} />
+        ))}
+      </div>
+    </Sektion>
+  );
+}
+
+export function Vortraege({ daten, etiketten }) {
+  return (
+    <Sektion titel={etiketten._}>
+      <div className="space-y-2">
+        {daten?.map(({ titel, beschreibung }, i) => (
+          <Punkt key={i} punkt={{ text: `${titel} | ${beschreibung}` }} />
         ))}
       </div>
     </Sektion>

@@ -1,8 +1,17 @@
-export function Sektion({ children, titel }) {
+export function Sektion({
+  children,
+  className,
+  titel,
+  ohneLinie,
+  ohneTitel,
+}) {
+  const ohneSektionTitel = ohneTitel && ohneLinie;
   return (
-    <section>
-      <SektionTitle text={titel} />
-      <div className="space-y-6">{children}</div>
+    <section className={className}>
+      {!ohneSektionTitel && (
+        <SektionTitle text={titel} ohneLinie={ohneLinie} />
+      )}
+      <div className="space-y-3">{children}</div>
     </section>
   );
 }
@@ -79,7 +88,7 @@ function EintragInhalt({ eintrag, className }) {
         )}
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-2.5">
         {punkte.map((punkt, i) => (
           <Punkt key={i} punkt={punkt} />
         ))}
@@ -94,11 +103,13 @@ function EintragObertitel({ titel }) {
   );
 }
 
-export function SektionTitle({ text }) {
+export function SektionTitle({ text, ohneLinie }) {
   return (
     <div>
-      <div className="w-7/8 border-1 border-t border-gray-400 ml-1"></div>
-      <h2 className="text-base font-bold text-black pb-3 leading-tight">
+      {!ohneLinie && (
+        <div className="w-7/8 border-1 border-t border-gray-400 ml-1"></div>
+      )}
+      <h2 className="text-[0.950rem] font-bold text-black pb-1.5 leading-tight">
         {text}
       </h2>
     </div>

@@ -8,6 +8,7 @@ import {
   BerufserfahrungSektion,
   OpensourceSektion,
   AusbildungSektion,
+  Vortraege,
 } from "../components";
 
 export default async function Page({ params }) {
@@ -28,7 +29,7 @@ export default async function Page({ params }) {
 
   return (
     <main className="flex flex-row gap-4 p-6 max-w-screen-lg mx-auto">
-      <aside className="w-7/32 space-y-8">
+      <aside className="w-7/32 space-y-6">
         <Kopfbereich {...kopfdaten} halbe="links" />
 
         <FaehigkeitenSektion
@@ -42,7 +43,7 @@ export default async function Page({ params }) {
           etiketten={etiketten.interessen}
         />
       </aside>
-      <section className="w-25/32 space-y-6">
+      <section className="w-25/32 space-y-4">
         <Kopfbereich {...kopfdaten} halbe="rechts" />
 
         <Motivation
@@ -59,6 +60,8 @@ export default async function Page({ params }) {
           daten={opensource}
           etiketten={etiketten.opensource}
         />
+
+        <Vortraege daten={vortraege} etiketten={etiketten.vortraege} />
 
         <AusbildungSektion
           daten={ausbildung}

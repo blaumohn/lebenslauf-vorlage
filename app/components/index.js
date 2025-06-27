@@ -7,4 +7,5 @@ export {
   BerufserfahrungSektion,
   AusbildungSektion,
   OpensourceSektion,
+  Vortraege,
 } from "./sektionen.jsx";
