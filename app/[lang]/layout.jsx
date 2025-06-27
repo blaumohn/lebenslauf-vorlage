@@ -1,0 +1,23 @@
+import "../globals.css";
+import { Source_Sans_3 } from "next/font/google";
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-source-sans",
+  display: "swap",
+});
+
+export const metadata = {
+  title: "Lebenslauf",
+  description: "lebenslauf",
+};
+
+export default async function Layout({ children, params }) {
+  const { lang } = await params;
+  return (
+    <html lang={lang} className={sourceSans.className}>
+      <body className={`antialiased`}>{children}</body>
+    </html>
+  );
+}

@@ -1,17 +1,17 @@
-import { getDaten, getEtiketten } from "./parse";
+import { getDaten, getEtiketten } from "../parse";
 import {
   Kopfbereich,
   Motivation,
   FaehigkeitenSektion,
   SprachenSektion,
+  InteressenSektion,
   BerufserfahrungSektion,
   OpensourceSektion,
-} from "./components";
-import { AusbildungSektion } from "./components/sektionen";
+  AusbildungSektion,
+} from "../components";
 
-export default function Page() {
-  const lang = "de"; // später z.B. per URL oder Header
-
+export default async function Page({ params }) {
+  const { lang } = await params;
   const daten = getDaten(lang);
   const etiketten = getEtiketten(lang);
   const {
@@ -27,8 +27,8 @@ export default function Page() {
   } = daten;
 
   return (
-    <main className="grid grid-cols-4 gap-6 p-6 max-w-screen-lg mx-auto">
-      <aside className="col-span-1 col-start-1 space-y-8">
+    <main className="grid grid-cols-32 gap-4 p-6 max-w-screen-lg mx-auto">
+      <aside className="col-span-7 col-start-1 space-y-8">
         <Kopfbereich {...kopfdaten} halbe="links" />
 
         <FaehigkeitenSektion
@@ -37,8 +37,12 @@ export default function Page() {
         />
 
         <SprachenSektion daten={sprachen} etiketten={etiketten.sprachen} />
+        <InteressenSektion
+          daten={interessen}
+          etiketten={etiketten.interessen}
+        />
       </aside>
-      <section className="col-start-2 col-span-3 space-y-8">
+      <section className="col-start-8 col-span-25 space-y-6">
         <Kopfbereich {...kopfdaten} halbe="rechts" />
 
         <Motivation

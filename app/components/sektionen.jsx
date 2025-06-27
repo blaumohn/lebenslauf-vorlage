@@ -17,25 +17,25 @@ export function Kopfbereich({ halbe, ...kopfdaten }) {
 
 function KopfbereichRechts({ telefon, ort, email, linkedin }) {
   return (
-    <header className="flex items-center max-w-screen-lg mb-5">
-      <div className="ml-auto text-gray-700 font-semibold text-sm text-right">
-        <p>
-          {telefon} | {ort}
-        </p>
-        <p>{email}</p>
-        <p>{linkedin}</p>
-      </div>
-    </header>
+    <div className="mb-4 ml-auto text-gray-600 font-semibold text-sm text-right leading-tight">
+      <p>
+        {telefon} | {ort}
+      </p>
+      <p>{email}</p>
+      <p>{linkedin}</p>
+    </div>
   );
 }
 
 function KopfbereichLinks({ name, bereich }) {
   return (
-    <div className="mb-4.5">
-      <div className="text-2xl font-bold text-left">{name}</div>
-      <div className="text-lg text-left font-semibold text-gray-600 whitespace-nowrap overflow:visible">
+    <div className="mb-3">
+      <p className="text-3xl font-semibold text-auslaufend text-left">
+        {name}
+      </p>
+      <p className="text-base text-left font-semibold text-gray-500 text-auslaufend leading-tight">
         {bereich}
-      </div>
+      </p>
     </div>
   );
 }
@@ -84,9 +84,9 @@ export function SprachenSektion({ daten, etiketten }) {
 export function InteressenSektion({ daten, etiketten }) {
   return (
     <Sektion titel={etiketten._}>
-      {daten?.map((interesse, i) => (
-        <Punkt key={i} punkt={interesse} />
-      ))}
+      <div className="text-beschreibung">
+        <span>{daten?.join(", ")}</span>
+      </div>
     </Sektion>
   );
 }

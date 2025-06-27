@@ -2,9 +2,36 @@
 
 @layer utilities {
   .text-beschreibung {
-    @apply text-sm text-gray-800;
+    @apply text-sm text-gray-800 font-normal leading-tight;
   }
   .eintrag-datum {
-    @apply text-sm text-gray-500;
+    @apply text-sm text-gray-700 font-light;
+  }
+  .text-auslaufend {
+    @apply whitespace-nowrap overflow-visible;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  span,
+  p {
+    break-inside: avoid;
+    orphans: 2;
+    widows: 2;
+  }
+
+  @page {
+    margin-left: 2.5cm;
+    margin-right: 1cm;
+    margin-top: 1cm;
+    margin-bottom: 1cm;
+  }
+
+  main {
+    padding: 0;
   }
 }

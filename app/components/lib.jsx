@@ -68,13 +68,13 @@ function EintragInhalt({ eintrag, className }) {
     <div className={className}>
       <div className="relative mb-3">
         <div className="flex justify-between items-center">
-          <h3 className="font-medium text-gray-700">{titel}</h3>
+          <h3 className="font-medium text-base text-gray-700">{titel}</h3>
           <span className="eintrag-datum">{zeitraum}</span>
         </div>
 
         {ort && (
           <div className="absolute top-full right-0 eintrag-datum ml-auto">
-            {ort}
+            <span>{ort}</span>
           </div>
         )}
       </div>
@@ -90,15 +90,15 @@ function EintragInhalt({ eintrag, className }) {
 
 function EintragObertitel({ titel }) {
   return (
-    <div className="text-lg font-semibold text-gray-800">{titel}</div>
+    <div className="text-base font-semibold text-gray-800">{titel}</div>
   );
 }
 
 export function SektionTitle({ text }) {
   return (
     <div>
-      <div className="w-7/8 border-1 border-t border-gray-300 ml-1"></div>
-      <h2 className="text-lg font-bold text-gray-600 pb-3 leading-tight">
+      <div className="w-7/8 border-1 border-t border-gray-400 ml-1"></div>
+      <h2 className="text-base font-bold text-gray-600 pb-3 leading-tight">
         {text}
       </h2>
     </div>
@@ -113,7 +113,9 @@ export function Punkt({ punktTextStil, punkt }) {
         <div className="pl-4">{<TagListe tags={punkt.tags} />}</div>
       )}
       <ul className={punktCSS}>
-        <li>{punkt.text}</li>
+        <li>
+          <span>{punkt.text}</span>
+        </li>
       </ul>
     </div>
   );
@@ -138,7 +140,7 @@ export function SymbolSkala({ wert }) {
   const max = 5;
   return (
     <div className="font-mono text-gray-500">
-      {"●".repeat(wert) + "○".repeat(max - wert)}
+      <span>{"●".repeat(wert) + "○".repeat(max - wert)}</span>
     </div>
   );
 }
