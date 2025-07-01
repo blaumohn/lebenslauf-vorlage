@@ -7,9 +7,27 @@
   .eintrag-datum {
     @apply text-sm text-gray-700 font-light;
   }
+
+  /* ⚠️ Funktioniert nicht mit responsive Prefixes wie `sm:*`
+       – vermutlich Tailwind-Limitierung oder Build-Issue
+   */
   .text-auslaufend {
-    @apply whitespace-nowrap overflow-visible;
+    @apply xs:whitespace-nowrap xs:overflow-visible;
   }
+}
+
+@layer base {
+  .js [data-tag-breite="unset"] {
+    visibility: hidden;
+  }
+
+  .no-js [data-tag-breite] {
+    visibility: visible;
+  }
+}
+
+@theme {
+  --breakpoint-xs: 28rem;
 }
 
 @media print {

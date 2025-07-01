@@ -29,8 +29,8 @@ const eintragBeruf = eintrag.extend({
   unternehmen: z.string(),
   stelleGruppe: z
     .object({
-      ende: z.boolean().optional(),
-      anfang: z.boolean().optional(),
+      vorherigeStelle: z.boolean().optional(),
+      letzteStelle: z.boolean().optional(),
     })
     .optional(),
 });

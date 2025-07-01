@@ -50,30 +50,39 @@ export function Motivation({ motivation, etiketten }) {
 
 export function FaehigkeitenSektion({ daten }) {
   return (
-    <Sektion className="mt-15" ohneTitel ohneLinie>
-      {daten.map((gruppe, i) => (
-        <div className="space-y-6" key={i}>
-          <span className="text-sm font-semibold text-gray-600">
-            {gruppe.stufe}
-          </span>
-          <div className="pl-1 space-y-1">
-            <SymbolSkala wert={gruppe.wert} />
-            <TagListe tags={gruppe.technologien} />
+    <section className="mt-15">
+      <div className="space-y-6">
+        {daten.map((gruppe, i) => (
+          <div className="break-inside-avoid" key={i}>
+            <p className="text-sm font-semibold text-gray-600 leading-tight">
+              {gruppe.stufe}
+            </p>
+            <div className="pl-1 space-y-1">
+              <SymbolSkala wert={gruppe.wert} />
+              <TagListe tags={gruppe.technologien} />
+            </div>
           </div>
-        </div>
-      ))}
-    </Sektion>
+        ))}
+      </div>
+    </section>
   );
 }
+
+/*
+          <li key={i} className="flex justify-between text-sm">
+            <span className="">{sprache}</span>
+            <span className="text-gray-500">{stufe}</span>
+          </li>
+*/
 
 export function SprachenSektion({ daten, etiketten }) {
   return (
     <Sektion titel={etiketten._}>
-      <ul>
+      <ul className="space-y-2">
         {daten.map(({ sprache, stufe }, i) => (
-          <li key={i} className="flex justify-between text-sm">
+          <li className="flex flex-col sm:flex-row justify-between text-sm gap-x-2 gap-y-0.5 leading-tight">
             <span>{sprache}</span>
-            <span className="text-gray-500">{stufe}</span>
+            <span className="text-gray-500 text-left">{stufe}</span>
           </li>
         ))}
       </ul>
@@ -111,7 +120,10 @@ export function Vortraege({ daten, etiketten }) {
     <Sektion titel={etiketten._}>
       <div className="space-y-2">
         {daten?.map(({ titel, beschreibung }, i) => (
-          <Punkt key={i} punkt={{ text: `${titel} | ${beschreibung}` }} />
+          <Punkt key={i}>
+            <span className="font-medium">{titel}</span>
+            <span> | {beschreibung}</span>
+          </Punkt>
         ))}
       </div>
     </Sektion>

@@ -1,17 +1,10 @@
-export function Sektion({
-  children,
-  className,
-  titel,
-  ohneLinie,
-  ohneTitel,
-}) {
-  const ohneSektionTitel = ohneTitel && ohneLinie;
+import dynamic from "next/dynamic";
+
+export function Sektion({ children, className, titel, ohneLinie }) {
   return (
     <section className={className}>
-      {!ohneSektionTitel && (
-        <SektionTitle text={titel} ohneLinie={ohneLinie} />
-      )}
-      <div className="space-y-3">{children}</div>
+      <SektionTitle text={titel} ohneLinie={ohneLinie} />
+      <div className="pl-0.5 space-y-3">{children}</div>
     </section>
   );
 }
@@ -27,34 +20,32 @@ export function EintrageSektion({ daten, etiketten }) {
 }
 
 export function Eintrag({ eintrag }) {
-  if (eintrag.stelleGruppe?.anfang) {
-    return <EintragStelleGruppeAnfang eintrag={eintrag} />;
-  }
-
-  if (eintrag.stelleGruppe?.ende) {
-    return <EintragStelleGruppeEnde eintrag={eintrag} />;
+  if (eintrag.stelleGruppe) {
+    return <StelleGruppeEintrag eintrag={eintrag} />;
   }
 
   return <EintragStelle eintrag={eintrag} />;
 }
 
 function EintragStelle({ eintrag }) {
-  const { projekt, unternehmen } = eintrag;
-
-  return (
-    <div>
-      <EintragObertitel titel={unternehmen ?? projekt} />
-      <EintragInhalt eintrag={eintrag} />
-    </div>
-  );
-}
-
-function EintragStelleGruppeAnfang({ eintrag }) {
   const { unternehmen } = eintrag;
 
   return (
     <div>
       <EintragObertitel titel={unternehmen} />
+      <EintragInhalt eintrag={eintrag} />
+    </div>
+  );
+}
+
+function StelleGruppeEintrag({ eintrag }) {
+  const { unternehmen, stelleGruppe } = eintrag;
+
+  return (
+    <div>
+      {stelleGruppe.letzteStelle && (
+        <EintragObertitel titel={unternehmen} />
+      )}
 
       <div className="pl-4 border-l-4 border-gray-400">
         <EintragInhalt className="mt-2" eintrag={eintrag} />
@@ -63,21 +54,22 @@ function EintragStelleGruppeAnfang({ eintrag }) {
   );
 }
 
-function EintragStelleGruppeEnde({ eintrag }) {
-  return (
-    <div className="pl-4 border-l-4 border-gray-400">
-      <EintragInhalt eintrag={eintrag} />
-    </div>
-  );
-}
 function EintragInhalt({ eintrag, className }) {
-  const { titel, ort, zeitraum, punkte } = eintrag;
+  const { projekt, titel, ort, zeitraum, punkte } = eintrag;
+  const projektTitel = projekt && (
+    <>
+      <span className="font-semibold">{projekt}</span>
+      <span> | </span>
+    </>
+  );
 
   return (
     <div className={className}>
       <div className="relative mb-3">
         <div className="flex justify-between items-center">
-          <h3 className="font-medium text-sm text-gray-700">{titel}</h3>
+          <h3 className="font-medium text-sm text-gray-700">
+            {projektTitel} {titel}
+          </h3>
           <span className="eintrag-datum">{zeitraum}</span>
         </div>
 
@@ -97,9 +89,11 @@ function EintragInhalt({ eintrag, className }) {
   );
 }
 
-function EintragObertitel({ titel }) {
+function EintragObertitel({ titel, children }) {
   return (
-    <div className="text-sm font-semibold text-gray-800">{titel}</div>
+    <div className="text-sm font-semibold text-gray-800">
+      {children ? children : <span>{titel}</span>}
+    </div>
   );
 }
 
@@ -116,7 +110,7 @@ export function SektionTitle({ text, ohneLinie }) {
   );
 }
 
-export function Punkt({ punktTextStil, punkt }) {
+export function Punkt({ punkt = {}, children }) {
   return (
     <div className="space-y-1 break-inside-avoid">
       {punkt.tags?.length > 0 && (
@@ -124,25 +118,26 @@ export function Punkt({ punktTextStil, punkt }) {
       )}
       <ul className="list-disc list-outside pl-3 text-beschreibung">
         <li>
-          <p>
-            <span className={punktTextStil}>{punkt.text}</span>
-          </p>
+          {children ? (
+            children
+          ) : (
+            <p>
+              <span>{punkt.text}</span>
+            </p>
+          )}
         </li>
       </ul>
     </div>
   );
 }
 
+const TagClient = dynamic(() => import("./TagClient"));
+
 export function TagListe({ tags }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 text-sm text-gray-700">
       {tags.map((tag, i) => (
-        <span
-          key={i}
-          className="bg-gray-200 px-2 py-0.5 rounded text-xs text-gray-700"
-        >
-          {tag}
-        </span>
+        <TagClient key={i}>{tag}</TagClient>
       ))}
     </div>
   );

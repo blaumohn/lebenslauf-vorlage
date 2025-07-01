@@ -16,7 +16,14 @@ export const metadata = {
 export default async function Layout({ children, params }) {
   const { lang } = await params;
   return (
-    <html lang={lang} className={sourceSans.className}>
+    <html lang={lang} className={sourceSans.className} class="no-js">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.remove('no-js'); document.documentElement.classList.add('js');`,
+          }}
+        />
+      </head>
       <body className={`antialiased`}>{children}</body>
     </html>
   );
