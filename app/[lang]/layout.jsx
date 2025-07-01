@@ -13,6 +13,8 @@ export const metadata = {
   description: "lebenslauf",
 };
 
+// 'async' wurde hinzugefügt, um die Next.js-Warnung zu vermeiden,
+// obwohl die Anwendung auch ohne funktioniert.
 export default async function Layout({ children, params }) {
   const { lang } = await params;
   return (
