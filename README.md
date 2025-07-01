@@ -9,7 +9,7 @@ Die Anwendung wurde entwickelt, um die Erstellung und Anpassung von Lebensläufe
 - **Einfache Layout-Anpassung**: Mit der Vorlage kannst du das Layout deines Lebenslaufs einfach ändern, ohne jede Zeile manuell bearbeiten zu müssen.
 - **Modulare Programmierung**: Ermöglicht eine einfache Änderung des Layouts, ohne das gesamte Dokument neu schreiben zu müssen. Die Struktur und das Design sind voneinander getrennt.
 - **Trennung von Inhalt und Programm**: Verhindert Fehler und erleichtert es, den Lebenslauf schnell zu aktualisieren. Entwickler können den Programtext anpassen, um den Lebenslauf weiter zu personalisieren.
-- **Responsive und druckfertig**: Mit ein wenig CSS ist der Lebenslauf sowohl für das Web als auch für den Druck optimiert.
+- **Responsive und druckfertig**: Das Layout ist bereits mit CSS angepasst und für den Einsatz sowohl im Web als auch im Druck vorbereitet. Alle erforderlichen Styles sind im Repo enthalten.
 - **Internationalisierung**: Der Lebenslauf lässt sich einfach in verschiedene Sprachen übersetzen, was in mehrsprachigen Umgebungen von Vorteil ist.
 
 ## Beispiel
