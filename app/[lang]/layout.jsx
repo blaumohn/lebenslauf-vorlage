@@ -16,7 +16,7 @@ export const metadata = {
 export default async function Layout({ children, params }) {
   const { lang } = await params;
   return (
-    <html lang={lang} className={sourceSans.className} class="no-js">
+    <html lang={lang} className={`${sourceSans.className} no-js`}>
       <head>
         <script
           dangerouslySetInnerHTML={{

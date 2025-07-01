@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useLayoutEffect, useState, useEffect } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
 const padding2InPx = 16;
 
 export default function TagClient({ children: text }) {
