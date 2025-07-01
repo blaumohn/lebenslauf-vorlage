@@ -35,7 +35,9 @@ berufserfahrung:
   - titel: Frontend Developer
     unternehmen: Tech Solutions GmbH
     ort: Berlin
-    zeitraum: 2021 – 2023
+    zeitraum: 2021 ‒ 2023
+    stelleGruppe:
+      letzteStelle: true
     punkte:
       - tags:
           - React
@@ -48,6 +50,56 @@ berufserfahrung:
           de: Tägliche Arbeit in einem cross-funktionalen Team.
           en: Daily work in a cross-functional team.
 
+  - titel: Junior Frontend Developer
+    unternehmen: Tech Solutions GmbH
+    ort: Berlin
+    zeitraum: 2020 ‒ 2021
+    stelleGruppe:
+      letzteStelle: false
+    punkte:
+      - tags:
+          - HTML
+          - CSS
+        text: Unterstützung bei der Entwicklung von Benutzeroberflächen für verschiedene Projekte.
+      - tags:
+          - JavaScript
+          - React
+        text:
+          de: Entwicklung von interaktiven UI-Komponenten.
+          en: Developed interactive UI components.
+
+  - titel: Backend Developer
+    unternehmen: WebTech Innovations
+    ort: Hamburg
+    zeitraum: 2019 ‒ 2020
+    punkte:
+      - tags:
+          - Node.js
+          - Express
+        text: Entwicklung von RESTful APIs zur Integration mit Frontend-Systemen.
+      - tags:
+          - MongoDB
+          - Docker
+        text:
+          de: Aufbau und Verwaltung von Datenbanken sowie Containerisierung der Anwendung.
+          en: Built and managed databases, as well as containerized the application using Docker.
+
+  - titel: Praktikant Frontend Developer
+    unternehmen: Creative Web GmbH
+    ort: München
+    zeitraum: 2018 ‒ 2019
+    punkte:
+      - tags:
+          - HTML
+          - CSS
+        text: Unterstützung im Design und der Implementierung von Weblayouts.
+      - tags:
+          - JavaScript
+          - React
+        text:
+          de: Entwicklung von interaktiven Webkomponenten im Team.
+          en: Developed interactive web components within the team.
+
 opensource:
   - titel: react-visualizer
     projekt: react-visualizer
@@ -57,6 +109,10 @@ opensource:
           - Open Source
           - React
         text: Ein Tool zur Visualisierung von React-Komponenten-Hierarchien.
+      - tags:
+          - Open Source
+          - Testing
+        text: Implementierung von Unit-Tests zur Sicherstellung der Funktionalität und Robustheit der Anwendung.
 
 sprachen:
   - sprache: Deutsch
@@ -80,8 +136,7 @@ interessen:
     en: Accessibility
 
 vortraege:
-  - titel: "Proxies: Node.js Event Management"
+  - titel: "Proxies: Ereignismanagement in Node.js"
     beschreibung:
-      de: Vortrag im Rahmen der ABC Aventura Speaker Series
+      de: ABC Aventura Vortragsreihe
       en: ABC Aventura Speaker Series
-
