@@ -1,4 +1,5 @@
 import { getDaten, getEtiketten } from "../parse";
+import sprachen from "../anzeige-sprachen.json";
 import {
   Kopfbereich,
   Motivation,
@@ -70,4 +71,7 @@ export default async function Page({ params }) {
       </section>
     </main>
   );
+}
+export function generateStaticParams() {
+  return sprachen.map((sprache) => ({ lang: sprache }));
 }

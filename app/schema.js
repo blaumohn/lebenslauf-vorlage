@@ -1,8 +1,8 @@
 import { z } from "zod";
+import anzeigeSprachen from "./anzeige-sprachen.json";
 
-const Langs = ["de", "en"];
 const zIntlStringObject = Object.fromEntries(
-  Langs.map((lang) => [lang, z.string()])
+  anzeigeSprachen.map((lang) => [lang, z.string()])
 );
 
 const intlString = z.union([z.string(), z.object(zIntlStringObject)]);

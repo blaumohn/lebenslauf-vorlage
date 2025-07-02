@@ -1,16 +1,11 @@
 # Lebenslauf Vorlage
 
-Dies ist eine einfache, modulare Vorlage für einen Lebenslauf, die es ermöglicht, das Layout schnell und einfach zu ändern, ohne das gesamte Dokument manuell anzupassen. Mit dieser Vorlage kann der Lebenslauf sowohl für den Druck als auch als HTML-Seite erstellt und geteilt werden.
+Einfache, modulare Lebenslauf-Vorlage, gebaut mit Next.js und React. Damit kannst du das Layout deines Lebenslaufs einfach ändern, ohne jede Zeile manuell bearbeiten zu müssen. Der Inhalt ist von der Anwendung getrennt, sodass er leicht über YAML bearbeitet werden kann, ohne Änderungen am Code vorzunehmen. Funktionen umfassen:
 
-## Ziele der Anwendung
+- Einfache Anpassung von Lebenslauf-Daten
+- Mehrsprachigkeit für verschiedene Sprachversionen
 
-Die Anwendung wurde entwickelt, um die Erstellung und Anpassung von Lebensläufen zu vereinfachen:
-
-- **Einfache Layout-Anpassung**: Mit der Vorlage kannst du das Layout deines Lebenslaufs einfach ändern, ohne jede Zeile manuell bearbeiten zu müssen.
-- **Modulare Programmierung**: Ermöglicht eine einfache Änderung des Layouts, ohne das gesamte Dokument neu schreiben zu müssen. Die Struktur und das Design sind voneinander getrennt.
-- **Trennung von Inhalt und Programm**: Verhindert Fehler und erleichtert es, den Lebenslauf schnell zu aktualisieren. Entwickler können den Programtext anpassen, um den Lebenslauf weiter zu personalisieren.
-- **Responsive und druckfertig**: Das Layout ist bereits mit CSS angepasst und für den Einsatz sowohl im Web als auch im Druck vorbereitet. Alle erforderlichen Styles sind im Repo enthalten.
-- **Internationalisierung**: Der Lebenslauf lässt sich einfach in verschiedene Sprachen übersetzen, was in mehrsprachigen Umgebungen von Vorteil ist.
+Die Anwendung kommt mit Mock-Daten, die es einfach machen, den Lebenslauf auszuprobieren. Sie ist sowohl für den Druck optimiert als auch mit einem responsiven CSS-Layout ausgestattet.
 
 ## Beispiel
 
@@ -34,10 +29,13 @@ Du kannst die Vorlage nach deinen Wünschen anpassen und die Änderungen sofort 
    npx next dev
    ```
 
-   Dein Lebenslauf wird unter [http://localhost:3000](http://localhost:3000) verfügbar sein.
+   Dein Lebenslauf wird unter `http://localhost:3000/<lang>` verfügbar sein, wobei `<lang>` in den Mock-Daten `en` oder `de` sein kann.[(\*)](#fußnote)
 
 3. **Daten bearbeiten**:
-   Die Lebenslauf-Daten werden in der Datei `data.yaml` gespeichert. Du kannst diese Datei anpassen, um deinen Lebenslauf zu personalisieren. Wenn keine Daten vorhanden sind, wird `tests/data.yaml` als Beispiel-Datenquelle verwendet.
+
+   - Die Lebenslauf-Daten werden in der Datei `data.yaml` gespeichert. Du kannst diese Datei anpassen, um deinen Lebenslauf zu personalisieren. Wenn keine Daten vorhanden sind, wird `tests/data.yaml` als Beispiel-Datenquelle verwendet.
+   - Die Sprachenliste wird in `app/anzeige-sprachen.json` definiert.
+   - Die Etiketten für die Sektionen werden in `app/etiketten.yaml` gespeichert.
 
 4. **Generierung einer HTML-Seite**:
    Der Lebenslauf wird als HTML-Seite generiert, die du einfach als URL teilen oder für den Druck vorbereiten kannst.
@@ -46,25 +44,27 @@ Du kannst die Vorlage nach deinen Wünschen anpassen und die Änderungen sofort 
 
 ```
 /lebenslauf-vorlage
-├── /app # React-Komponenten, Seiten und Logik
-│ ├── /components # Komponenten für Layout und Darstellung
-│ ├── /parse # Daten werden aus YAML-Dateien gelesen.
-│ ├── /[lang] # Next.js Seite
-│ ├── /etiketten.yaml # Die Beschriftungen für die Sektionen
-│ └── /schema.js # Das Schema für die Lebenslauf-Daten
-├── /tests # Testdaten (z.B. für Mock-Daten)
-├── /data.yaml # Deine persönlichen Lebenslauf-Daten
-└── /tests/data.yaml # Beispiel-Mock-Daten
-/data.yaml              # Deine persönlichen Lebenslauf-Daten
-/globals.css            # Einige CSS / Tailwind Utilities
+├── /app                      # React-Komponenten, Seiten und Logik
+│ ├── /components             # Komponenten für Layout und Darstellung
+│ ├── /parse                  # Daten werden aus YAML-Dateien gelesen
+│ ├── /[lang]                 # Next.js Seiten für jede Sprache
+│ ├── /anzeige-sprachen.json  # Die Sprachenliste
+│ ├── /etiketten.yaml         # Die Beschriftungen für die Sektionen
+│ ├── /schema.js              # Das Schema für die Lebenslauf-Daten
+├── /data.yaml                # Deine persönlichen Lebenslauf-Daten
+├── /tests/data.yaml          # Beispiel-Mock-Daten
+/globals.css                  # Einige CSS / Tailwind Utilities
 ```
 
 ## Zukunftspläne
 
-- Unterstützung für verschiedene Lebenslauf-Designs und -Stile.
-- Automatische Integration von Lebenslauf-Daten aus LinkedIn oder anderen Quellen.
-- Erweiterte Funktionen zur Personalisierung von Layout und Design.
+- **Für die Verwendung als veröffentlichte Website**: Persönliche Angaben einschränken und die E-Mail durch einen Kontaktformular-Link ersetzen.
+- **Synchronisierung von Lebenslauf-Daten** aus LinkedIn oder anderen Quellen.
 
 ## Lizenz
 
 Dieses Projekt steht unter der MIT-Lizenz. Weitere Informationen findest du in der [LICENSE](LICENSE)-Datei.
+
+## Fußnote
+
+(\*) Die Stamm-URL wird nicht direkt unterstützt, da sie in Hosting-Optionen wie **Netlify** weitergeleitet wird, die die Anfrage basierend auf der Sprache im **HTTP-Header** an den entsprechenden Sprachpfad weiterleiten. Das ist der Grund, warum die Pfade `/<lang>` (z. B. `/de`, `/en`) ausreichen.

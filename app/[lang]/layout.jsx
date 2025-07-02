@@ -26,7 +26,7 @@ export default async function Layout({ children, params }) {
           }}
         />
       </head>
-      <body className={`antialiased`}>{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
