@@ -71,6 +71,10 @@ export const lebenslaufSchema = z.object({
   ausbildung: z.array(eintragAusbildung),
   vortraege: z.array(eintragVortrag),
   interessen: z.array(intlString),
+  fussbereich: z.object({
+    text: intlString,
+    link: z.string().optional(),
+  }),
 });
 
 export const etikettenSchema = z.lazy(() =>

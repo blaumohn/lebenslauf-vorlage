@@ -8,17 +8,15 @@ const sourceSans = Source_Sans_3({
   display: "swap",
 });
 
-export const metadata = {
-  title: "Lebenslauf",
-  description: "lebenslauf",
-};
-
 // 'async' wurde hinzugefügt, um die Next.js-Warnung zu vermeiden,
 // obwohl die Anwendung auch ohne funktioniert.
 export default async function Layout({ children, params }) {
   const { lang } = await params;
   return (
-    <html lang={lang} className={`${sourceSans.className} no-js`}>
+    <html
+      lang={lang}
+      className={`${sourceSans.className} no-js max-w-screen mx-auto`}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{

@@ -10,7 +10,14 @@ import {
   OpensourceSektion,
   AusbildungSektion,
   Vortraege,
+  Fussbereich,
 } from "../components";
+
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  const etiketten = getEtiketten(lang);
+  return { title: etiketten._, description: etiketten._ };
+}
 
 export default async function Page({ params }) {
   const { lang } = await params;
@@ -26,50 +33,61 @@ export default async function Page({ params }) {
     interessen,
     ausbildung,
     opensource,
+    fussbereich,
   } = daten;
 
   return (
-    <main className="max-sm:hyphens-auto flex flex-row gap-4 p-6 max-w-screen-lg mx-auto">
-      <aside className="w-1/3 xs:w-7/32 space-y-6">
-        <Kopfbereich {...kopfdaten} halbe="links" />
+    <div className="flex flex-col space-y-6">
+      <main className="max-sm:hyphens-auto flex flex-row gap-4">
+        <aside className="w-1/3 xs:w-7/32 space-y-6">
+          <Kopfbereich {...kopfdaten} halbe="links" />
 
-        <FaehigkeitenSektion
-          daten={faehigkeiten}
-          etiketten={etiketten.faehigkeiten}
-        />
+          <FaehigkeitenSektion
+            daten={faehigkeiten}
+            etiketten={etiketten.faehigkeiten}
+          />
 
-        <SprachenSektion daten={sprachen} etiketten={etiketten.sprachen} />
-        <InteressenSektion
-          daten={interessen}
-          etiketten={etiketten.interessen}
-        />
-      </aside>
-      <section className="w-2/3 xs:w-25/32 space-y-4">
-        <Kopfbereich {...kopfdaten} halbe="rechts" />
+          <SprachenSektion
+            daten={sprachen}
+            etiketten={etiketten.sprachen}
+          />
+          <InteressenSektion
+            daten={interessen}
+            etiketten={etiketten.interessen}
+          />
+        </aside>
 
-        <Motivation
-          motivation={motivation}
-          etiketten={etiketten.motivation}
-        />
+        <section className="w-2/3 xs:w-25/32 space-y-4">
+          <Kopfbereich {...kopfdaten} halbe="rechts" />
 
-        <BerufserfahrungSektion
-          daten={berufserfahrung}
-          etiketten={etiketten.berufserfahrung}
-        />
+          <Motivation
+            motivation={motivation}
+            etiketten={etiketten.motivation}
+          />
 
-        <OpensourceSektion
-          daten={opensource}
-          etiketten={etiketten.opensource}
-        />
+          <BerufserfahrungSektion
+            daten={berufserfahrung}
+            etiketten={etiketten.berufserfahrung}
+          />
 
-        <Vortraege daten={vortraege} etiketten={etiketten.vortraege} />
+          <OpensourceSektion
+            daten={opensource}
+            etiketten={etiketten.opensource}
+          />
 
-        <AusbildungSektion
-          daten={ausbildung}
-          etiketten={etiketten.ausbildung}
-        />
-      </section>
-    </main>
+          <Vortraege daten={vortraege} etiketten={etiketten.vortraege} />
+
+          <AusbildungSektion
+            daten={ausbildung}
+            etiketten={etiketten.ausbildung}
+          />
+        </section>
+      </main>
+      <Fussbereich
+        daten={{ fussbereich, kopfdaten }}
+        etiketten={etiketten}
+      />
+    </div>
   );
 }
 export function generateStaticParams() {

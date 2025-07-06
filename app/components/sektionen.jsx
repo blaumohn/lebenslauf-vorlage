@@ -5,6 +5,7 @@ import {
   SymbolSkala,
   Punkt,
 } from "./lib.jsx";
+import { macheVollUrl, heutigesDatum } from "./lib.js";
 
 export function Kopfbereich({ halbe, ...kopfdaten }) {
   switch (halbe) {
@@ -37,6 +38,28 @@ function KopfbereichLinks({ name, bereich }) {
         {bereich}
       </p>
     </div>
+  );
+}
+export function Fussbereich({ daten: { fussbereich, kopfdaten } }) {
+  const titel = `${heutigesDatum()} ${kopfdaten.name}`;
+  const link = (
+    <a
+      href={macheVollUrl(fussbereich.link)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="whitespace-nowrap text-gray-600 hover:underline"
+    >
+      {fussbereich.link}
+    </a>
+  );
+  return (
+    <footer className="break-before-avoid break-inside-avoid github-note text-sm border-t border-gray-300 font-light text-gray-700 text-center">
+      <span className="whitespace-nowrap font-normal">{titel} </span>
+      <span className="whitespace-nowrap">| {fussbereich.text} </span>
+      {fussbereich.link && (
+        <span className="whitespace-nowrap">{link}</span>
+      )}
+    </footer>
   );
 }
 

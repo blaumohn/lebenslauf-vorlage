@@ -8,4 +8,5 @@ export {
   AusbildungSektion,
   OpensourceSektion,
   Vortraege,
+  Fussbereich,
 } from "./sektionen.jsx";
