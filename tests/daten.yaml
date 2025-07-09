@@ -8,6 +8,12 @@ kopfdaten:
   telefon: +49 151 12345678
   linkedin: https://linkedin.com/in/alexbeispiel
 
+fussbereich:
+  text:
+    de: "Erstellt mit der React/Next.js Vorlage von Dani Y.:"
+    en: "Created with the React/Next.js template by Dani Y.:"
+  link: github.com/blaumohn/lebenslauf-vorlage
+
 motivation:
   de: Ich bin ein leidenschaftlicher Entwickler mit Fokus auf moderne Webtechnologien.
   en: I am a passionate developer focused on modern web technologies.

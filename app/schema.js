@@ -2,7 +2,7 @@ import { z } from "zod";
 import anzeigeSprachen from "./anzeige-sprachen.json";
 
 const zIntlStringObject = Object.fromEntries(
-  anzeigeSprachen.map((lang) => [lang, z.string()])
+  anzeigeSprachen.map((lang) => [lang, z.string()]),
 );
 
 const intlString = z.union([z.string(), z.object(zIntlStringObject)]);
@@ -82,5 +82,5 @@ export const etikettenSchema = z.lazy(() =>
     .object({
       _: intlString,
     })
-    .catchall(z.union([intlString, etikettenSchema]))
+    .catchall(z.union([intlString, etikettenSchema])),
 );

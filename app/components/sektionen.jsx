@@ -53,9 +53,11 @@ export function Fussbereich({ daten: { fussbereich, kopfdaten } }) {
     </a>
   );
   return (
-    <footer className="break-before-avoid break-inside-avoid github-note text-sm border-t border-gray-300 font-light text-gray-700 text-center">
+    <footer className="break-before-avoid break-inside-avoid text-sm border-t border-gray-300 font-light text-gray-700 text-center">
       <span className="whitespace-nowrap font-normal">{titel} </span>
+      <wbr />
       <span className="whitespace-nowrap">| {fussbereich.text} </span>
+      <wbr />
       {fussbereich.link && (
         <span className="whitespace-nowrap">{link}</span>
       )}
