@@ -144,11 +144,14 @@ export function Vortraege({ daten, etiketten }) {
   return (
     <Sektion titel={etiketten._}>
       <div className="space-y-2">
-        {daten?.map(({ titel, beschreibung }, i) => (
-          <Punkt key={i}>
-            <span className="font-medium">{titel}</span>
-            <span> | {beschreibung}</span>
-          </Punkt>
+        {daten?.map(({ titel, beschreibung, datum }, i) => (
+          <div className="flex justify-between space-x-10">
+            <Punkt key={i}>
+              <span className="font-medium">{titel}</span>
+              <span> | {beschreibung}</span>
+            </Punkt>
+            <span className="eintrag-datum">{datum}</span>
+          </div>
         ))}
       </div>
     </Sektion>

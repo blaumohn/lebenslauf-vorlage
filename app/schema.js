@@ -52,6 +52,7 @@ const eintragAusbildung = z.object({
 const eintragVortrag = z.object({
   titel: z.string(),
   beschreibung: intlString,
+  datum: z.string(),
 });
 
 export const lebenslaufSchema = z.object({

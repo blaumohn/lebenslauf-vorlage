@@ -33,14 +33,34 @@ export default function TagClient({ children: text }) {
     window.addEventListener("resize", verzoegerteMessung);
     return () => window.removeEventListener("resize", verzoegerteMessung);
   }, []);
+  const spanBreiteErmittelt = breite !== null;
 
+  if (!spanBreiteErmittelt)
+    return (
+      <Tag
+        style={null}
+        dataTagBreite="unset"
+        spanRef={spanRef}
+        text={text}
+      />
+    );
+
+  return (
+    <Tag
+      style={{ width: `${breite + padding2InPx}px` }}
+      dataTagBreite="gesetzt"
+      spanRef={spanRef}
+      text={text}
+    />
+  );
+}
+
+function Tag({ style, dataTagBreite, spanRef, text }) {
   return (
     <div
       className="py-0.5 px-2  bg-gray-200 rounded"
-      style={
-        breite !== null ? { width: `${breite + padding2InPx}px` } : null
-      }
-      data-tag-breite={breite === null ? "unset" : "gesetzt"}
+      style={style}
+      data-tag-breite={dataTagBreite}
     >
       <span ref={spanRef}>{text}</span>
     </div>

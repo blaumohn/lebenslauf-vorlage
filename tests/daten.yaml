@@ -143,6 +143,7 @@ interessen:
 
 vortraege:
   - titel: "Proxies: Ereignismanagement in Node.js"
+    datum: "2024"
     beschreibung:
       de: ABC Aventura Vortragsreihe
       en: ABC Aventura Speaker Series
