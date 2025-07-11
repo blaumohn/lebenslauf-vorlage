@@ -6,7 +6,7 @@ export default defineConfig({
   test: {
     environment: "jsdom", // für React-Tests
     globals: true, // erlaubt describe(), expect() global
-    include: ["tests/**/*.test.js?(x)"], // oder dein Wunschpfad
+    include: ["tests/**/*.test.js?(x)"],
     setupFiles: "./tests/setup.js",
   },
 });
