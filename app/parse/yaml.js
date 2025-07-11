@@ -1,15 +1,18 @@
 import fs from "fs";
 import path from "path";
 import yaml from "js-yaml";
-import { extrahiereSprache } from "./lib";
+import { reduziereAufSprache } from "./lib";
 
 export function getObjektVonYaml(dateipfad, lang, schema, mockDatenPfad) {
-  const yamlZeichenkette = getDatei(dateipfad, mockDatenPfad);
-
-  const objektVonYaml = yaml.load(yamlZeichenkette);
+  const objektVonYaml = ladeObjektVonYamlDatei(dateipfad, mockDatenPfad);
 
   const validiertObjekt = schema.parse(objektVonYaml);
-  return extrahiereSprache(validiertObjekt, lang);
+  return reduziereAufSprache(validiertObjekt, lang);
+}
+
+function ladeObjektVonYamlDatei(dateipfad, mockDatenPfad) {
+  const yamlZeichenkette = getDatei(dateipfad, mockDatenPfad);
+  return yaml.load(yamlZeichenkette);
 }
 
 function getDatei(pfad, mockDatenPfad) {
@@ -28,3 +31,7 @@ function leseDatei(pfad) {
   const vollerPfad = path.join(process.cwd(), pfad);
   return fs.readFileSync(vollerPfad, "utf8");
 }
+
+export const __testtables__ = {
+  ladeObjektVonYamlDatei,
+};

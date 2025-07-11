@@ -1,18 +1,14 @@
-import fs from "fs";
-import yaml from "yaml";
 import { lebenslaufSchema } from "../app/schema.js";
+import { ladeFixtures } from "./fixtures/index.js";
 
-const yamlText = fs.readFileSync("./daten.yaml", "utf8");
-const validFixture = yaml.parse(yamlText);
+const { lebenslauf } = ladeFixtures();
 
 describe("CV-Schema", () => {
   it("akzeptiert gültige Daten", () => {
-    expect(() => lebenslaufSchema.parse(validFixture)).not.toThrow();
+    expect(() => lebenslaufSchema.parse(lebenslauf.gueltig)).not.toThrow();
   });
 
   it("lehnt unvollständige Daten ab", () => {
-    const ungueltig = { ...validFixture };
-    delete ungueltig.motivation; // z. B. ein Pflichtfeld
-    expect(() => lebenslaufSchema.parse(ungueltig)).toThrow();
+    expect(() => lebenslaufSchema.parse(lebenslauf.ungueltig)).toThrow();
   });
 });
